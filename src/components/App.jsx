@@ -14,6 +14,7 @@ import ContactList from './ContactList';
       border: '1px solid black',
       borderRadius: '4px',
       maxWidth: '320px',
+      marginTop: '44px',
       margin: 'auto',
       padding: '12px'
       }}

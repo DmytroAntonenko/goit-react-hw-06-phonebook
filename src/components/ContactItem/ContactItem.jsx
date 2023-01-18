@@ -1,8 +1,10 @@
 import ProtoTypes from 'prop-types';
+
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts-reducer';
 
 import css from './ContactItem.module.css';
+
 const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
   const onDelete = () => dispatch(deleteContact(id));
@@ -24,4 +26,5 @@ ContactItem.propTypes = {
   id: ProtoTypes.string.isRequired,
   onDelete: ProtoTypes.func,
 };
+
 export default ContactItem;

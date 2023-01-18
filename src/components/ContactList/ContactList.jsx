@@ -8,10 +8,10 @@ import ContactItem from '../ContactItem/ContactItem';
 const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  
-  const filteredContacts = contacts.filter(contact =>
-    // console.log(contact.name.toString().toLowerCase())
-  contact.name.toString().toLowerCase().includes(filter.toLowerCase())
+  const normalizedFilter = filter.toLowerCase();
+
+  const filteredContacts = contacts.filter(({name}) =>
+  name.toLowerCase().includes(normalizedFilter)
   );
 
   return (
