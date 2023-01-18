@@ -30,7 +30,7 @@ const contactsSlice = createSlice({
     deleteContact(state, {payload}) {
       const index = state.findIndex(({id}) => id === payload);
       state.splice(index, 1);
-      // state.filter(({ id }) => id !== payload);
+      // state.filter({ id } => id !== payload);
     },
   },
 });
