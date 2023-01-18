@@ -1,36 +1,41 @@
 import { useState } from 'react';
 import shortid from 'shortid';
-import PropTypes from "prop-types";
+
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contacts-reducer';
+
 import css from './ContactForm.module.css';
 
-const ContactForm = ({ onSubmit }) => {
-    
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+const ContactForm = () => {   
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const nameInputId = shortid.generate();
+  const numberInputId = shortid.generate();
+  const dispatch = useDispatch();
+  
 
-    const nameInputId = shortid.generate();
-    const numberInputId = shortid.generate();
-
-    const handleChange = event => {
-      const {name, value} = event.currentTarget;
-      switch (name) {
-        case 'name':
-          setName(value)
-          break;
-        case 'number':
-          setNumber(value)
-          break;
-        default:
-          return;
-      }  
+  const handleChange = event => {
+    const {name, value} = event.currentTarget;
+    switch (name) {
+      case 'name':
+        setName(value)
+        break;
+      case 'number':
+        setNumber(value)
+        break;
+      default:
+        return;
+    }  
     };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        onSubmit({ name, number });
-        setName('');
-        setNumber('');
-      };
+  const handleSubmit = event => {
+    event.preventDefault();
+    const form = event.currentTarget.elements;
+    
+    dispatch(addContact(form.name.value, form.number.value));
+    setName('');
+    setNumber('');
+  };
 
 
     return(
@@ -61,14 +66,9 @@ const ContactForm = ({ onSubmit }) => {
           id={numberInputId}
         />
       </label>
-      <button type="submit">Add contact</button>
-      
+      <button type="submit">Add contact</button>  
      </form>
     )
-};
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
