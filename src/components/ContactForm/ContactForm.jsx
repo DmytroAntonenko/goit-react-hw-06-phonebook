@@ -2,7 +2,7 @@ import { useState } from 'react';
 import shortid from 'shortid';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/contacts-actions';
+import { getContacts } from 'redux/contacts-selectors';
 import { addContact } from '../../redux/contacts-reducer';
 
 import css from './ContactForm.module.css';
