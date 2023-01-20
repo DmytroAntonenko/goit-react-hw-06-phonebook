@@ -1,13 +1,9 @@
-
 import ContactForm from "./ContactForm";
 import Filter from './Filter';
 import ContactList from './ContactList';
 
-
-
   const App = () => {
-    
-  
+     
   return (
     <div
       style={{
@@ -26,6 +22,5 @@ import ContactList from './ContactList';
       <ContactList />
     </div>
   )}
-
 
 export default App;
